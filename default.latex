@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$$if(twocolumn)$twocolumn$endif$]{$documentclass$}
 $if(fontfamily)$
 \usepackage{$fontfamily$}
 $else$
@@ -11,6 +11,10 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
+
+\usepackage[absolute]{textpos}
+\TPGrid{1}{1}
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -144,9 +148,24 @@ $header-includes$
 $endfor$
 
 \begin{document}
+
 $if(title)$
-\maketitle
+$if(twocolumn)$
+\twocolumn[
 $endif$
+\begin{center}
+{\LARGE $title$}
+
+{\large $author$}
+
+{\normalsize $date$}
+\end{center}
+$if(twocolumn)$
+]
+$endif$
+$endif$
+
+
 $if(abstract)$
 \begin{abstract}
 $abstract$
