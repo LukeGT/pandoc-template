@@ -11,7 +11,7 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-
+\usepackage[bottom]{footmisc}
 \usepackage[absolute]{textpos}
 \TPGrid{1}{1}
 
