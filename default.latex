@@ -142,13 +142,49 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
+$if(bigtitle)$
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}   % Horizontal rule
+\makeatletter
+\def\printtitle{%
+    {\centering \@title\par}}
+\def\printauthor{%
+    {\centering \large \@author}}
+\makeatother
+$endif$
+
 $if(title)$
+$if(bigtitle)$
+\title{
+    \normalsize
+    ~\\[2.0cm]
+    \HRule{0.5pt} \\ [0.5cm]
+    \LARGE
+    \textbf{$title$} \\
+    \normalsize
+    $if(subtitle)$
+    ~\\
+    $subtitle$
+    $endif$
+    ~\\ [0.4cm]
+    \HRule{0.5pt} \\ [1cm]
+}
+$else$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
+$endif$
+
 $if(author)$
+$if(bigtitle)$
+\author{\uppercase{$author$}}
+$else$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
+$endif$
+
+$if(date)$
 \date{$date$}
+$endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -159,13 +195,7 @@ $if(title)$
 $if(twocolumn)$
 \twocolumn[
 $endif$
-\begin{center}
-{\LARGE $title$}
-
-{\large $author$}
-
-{\normalsize $date$}
-\end{center}
+\maketitle
 $if(twocolumn)$
 ]
 $endif$
