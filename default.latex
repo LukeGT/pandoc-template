@@ -14,10 +14,14 @@ $endif$
 \usepackage[bottom]{footmisc}
 \usepackage[absolute]{textpos}
 \TPGrid{1}{1}
-
+\usepackage{float}
 $if(tikz)$
 \usepackage{tikz}
 \usetikzlibrary{$tikz$}
+$if(pgfplots)$
+\usepackage{pgfplots}
+\pgfplotsset{compat=$pgfplots$}
+$endif$
 $endif$
 
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
