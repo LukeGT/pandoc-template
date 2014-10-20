@@ -18,6 +18,9 @@ $endif$
 $if(caption)$
 \usepackage[$caption$]{caption}
 $endif$
+$if(subcaption)$
+\usepackage[$subcaption$]{subcaption}
+$endif$
 $if(tikz)$
 \usepackage{tikz}
 \usetikzlibrary{$tikz$}
